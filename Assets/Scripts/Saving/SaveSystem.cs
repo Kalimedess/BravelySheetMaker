@@ -20,7 +20,7 @@ public class SaveSystem : MonoBehaviour
     }
     public static SheetData LoadPlayer(Sheet sheet)
     {
-        string path = Application.persistentDataPath + "/" + sheet.SheetName + ".bvst";
+        string path = Application.persistentDataPath + "/" + sheet.SheetName;
 
         if (File.Exists(path))
         {

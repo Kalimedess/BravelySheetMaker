@@ -15,8 +15,8 @@ public class WeirdAssScriptToCopyBtnTxtToSheet : MonoBehaviour
     }
     public void OnClickedButton()
     {
-        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = textToInsertIntoSheet;
-        textToInsertIntoSheet = _sheet.SheetName;
+        textToInsertIntoSheet = gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
+        _sheet.SheetName = textToInsertIntoSheet;
         _sheet.DeactivateLoadWindowBeforeLoad();
     }
 }
