@@ -29,20 +29,14 @@ public class LoadSavedFiles : MonoBehaviour
     }
     private void CreateSavedSheetsArray()
     {
+        savedFiles = new string[Directory.GetFiles(Application.persistentDataPath, "*.bvst").Length];
         savedFiles = Directory.GetFiles(Application.persistentDataPath, "*.bvst");
+        savedFiles[savedFiles.Length-1] = Directory.GetFiles(Application.persistentDataPath, "player.fun")[0];
         foreach(string file in savedFiles)
         {
             currentSheetButton = Instantiate(sheetButtonPrefab,gameObject.transform);
             currentSheetButton.GetComponentInChildren<TextMeshProUGUI>().text = Path.GetFileName(file);
-            currentSheetButton.GetComponent<Button>().onClick.AddListener(OnFileBtnClk);
         }
     }
-    public void OnFileBtnClk()
-    {
-        OnFileButtonClick(".bvst");
-    }
-    public void OnFileButtonClick(string filename)
-    {
-        _sheet.SheetName = filename;
-    }
+    
 }
